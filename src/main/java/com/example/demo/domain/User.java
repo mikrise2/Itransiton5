@@ -9,11 +9,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String email;
     private String username;
     private String password;
-    private boolean blocked;
-    private boolean deleted;
     private boolean active;
+    private String dateOfRegistration;
+    private String dateOfLastLogin;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -62,19 +63,27 @@ public class User {
         this.roles = roles;
     }
 
-    public boolean isBlocked() {
-        return blocked;
+    public String getEmail() {
+        return email;
     }
 
-    public void setBlocked(boolean blocked) {
-        this.blocked = blocked;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public boolean isDeleted() {
-        return deleted;
+    public String getDateOfRegistration() {
+        return dateOfRegistration;
     }
 
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
+    public void setDateOfRegistration(String dateOfRegistration) {
+        this.dateOfRegistration = dateOfRegistration;
+    }
+
+    public String getDateOfLastLogin() {
+        return dateOfLastLogin;
+    }
+
+    public void setDateOfLastLogin(String dateOfLastLogin) {
+        this.dateOfLastLogin = dateOfLastLogin;
     }
 }

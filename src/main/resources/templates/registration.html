@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,13 +10,17 @@
 <h1 class="text-center">Registration</h1>
 <form class="container-md mt-5" th:action="@{/registration}" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-               placeholder="Enter email" name="username">
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+               placeholder="Enter email" name="email">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+    </div>
+    <div class="form-group">
+        <label for="usernameInput">Username</label>
+        <input type="text" class="form-control" id="usernameInput" placeholder="UserName" name="username">
     </div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
     <button type="submit" class="btn btn-dark mt-3">Submit</button>

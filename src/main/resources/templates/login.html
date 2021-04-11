@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -12,13 +11,13 @@
 <h1 class="text-center">Login</h1>
 <form class="container-md mt-5" th:action="@{/login}" method="POST">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
                placeholder="Enter email" name="username">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
     </div>
     <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
     <button type="submit" class="btn btn-dark mt-3">login</button>
@@ -26,8 +25,12 @@
         <a class="btn btn-dark" href="/registration" role="button">registration</a>
     </div>
 </form>
-<!--/*@thymesVar id="message" type=""*/-->
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+<div class="container-md mt-2">
+    <div th:if="${param.error}" class="alert alert-danger">
+        Invalid username and password or your account is blocked.
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
