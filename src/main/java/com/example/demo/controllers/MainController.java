@@ -4,6 +4,7 @@ import com.example.demo.domain.Role;
 import com.example.demo.domain.User;
 import com.example.demo.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -97,7 +98,7 @@ public class MainController {
     }
 
     private boolean logout(HttpServletRequest request, HttpServletResponse response) {
-        var authenticator = SecurityContextHolder.getContext().getAuthentication();
+        Authentication authenticator = SecurityContextHolder.getContext().getAuthentication();
         if (authenticator.isAuthenticated() && (userRepo.findByEmail(authenticator.getName()) == null || !userRepo.findByEmail(authenticator.getName()).isActive())) {
             new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
             return true;
